@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.game.WX.mapper.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.game.WX.model.Account" >
+    <id column="agencyID" property="agencyid" jdbcType="INTEGER" />
+    <result column="userName" property="username" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="referrer" property="referrer" jdbcType="INTEGER" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="weixin" property="weixin" jdbcType="VARCHAR" />
+    <result column="operate" property="operate" jdbcType="VARCHAR" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="LoginTime" property="logintime" jdbcType="TIMESTAMP" />
+    <result column="ForbidTime" property="forbidtime" jdbcType="TIMESTAMP" />
+    <result column="ForbidCause" property="forbidcause" jdbcType="VARCHAR" />
+    <result column="verification" property="verification" jdbcType="VARCHAR" />
+    <result column="verificationTime" property="verificationtime" jdbcType="TIMESTAMP" />
+    <result column="phoneNum" property="phonenum" jdbcType="VARCHAR" />
+    <result column="ip1" property="ip1" jdbcType="VARCHAR" />
+    <result column="ip2" property="ip2" jdbcType="VARCHAR" />
+    <result column="ips" property="ips" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    agencyID, userName, password, referrer, account, weixin, operate, createtime, LoginTime, 
+    ForbidTime, ForbidCause, verification, verificationTime, phoneNum, ip1, ip2, ips
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from account
+    where agencyID = #{agencyid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from account
+    where agencyID = #{agencyid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.game.WX.model.Account" >
+    insert into account (agencyID, userName, password, 
+      referrer, account, weixin, 
+      operate, createtime, LoginTime, 
+      ForbidTime, ForbidCause, verification, 
+      verificationTime, phoneNum, ip1, 
+      ip2, ips)
+    values (#{agencyid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{referrer,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{weixin,jdbcType=VARCHAR}, 
+      #{operate,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{logintime,jdbcType=TIMESTAMP}, 
+      #{forbidtime,jdbcType=TIMESTAMP}, #{forbidcause,jdbcType=VARCHAR}, #{verification,jdbcType=VARCHAR}, 
+      #{verificationtime,jdbcType=TIMESTAMP}, #{phonenum,jdbcType=VARCHAR}, #{ip1,jdbcType=VARCHAR}, 
+      #{ip2,jdbcType=VARCHAR}, #{ips,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.game.WX.model.Account" >
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="agencyid != null" >
+        agencyID,
+      </if>
+      <if test="username != null" >
+        userName,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="referrer != null" >
+        referrer,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="weixin != null" >
+        weixin,
+      </if>
+      <if test="operate != null" >
+        operate,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="logintime != null" >
+        LoginTime,
+      </if>
+      <if test="forbidtime != null" >
+        ForbidTime,
+      </if>
+      <if test="forbidcause != null" >
+        ForbidCause,
+      </if>
+      <if test="verification != null" >
+        verification,
+      </if>
+      <if test="verificationtime != null" >
+        verificationTime,
+      </if>
+      <if test="phonenum != null" >
+        phoneNum,
+      </if>
+      <if test="ip1 != null" >
+        ip1,
+      </if>
+      <if test="ip2 != null" >
+        ip2,
+      </if>
+      <if test="ips != null" >
+        ips,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="agencyid != null" >
+        #{agencyid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="referrer != null" >
+        #{referrer,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="operate != null" >
+        #{operate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logintime != null" >
+        #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forbidtime != null" >
+        #{forbidtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forbidcause != null" >
+        #{forbidcause,jdbcType=VARCHAR},
+      </if>
+      <if test="verification != null" >
+        #{verification,jdbcType=VARCHAR},
+      </if>
+      <if test="verificationtime != null" >
+        #{verificationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phonenum != null" >
+        #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="ip1 != null" >
+        #{ip1,jdbcType=VARCHAR},
+      </if>
+      <if test="ip2 != null" >
+        #{ip2,jdbcType=VARCHAR},
+      </if>
+      <if test="ips != null" >
+        #{ips,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.game.WX.model.Account" >
+    update account
+    <set >
+      <if test="username != null" >
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="referrer != null" >
+        referrer = #{referrer,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="weixin != null" >
+        weixin = #{weixin,jdbcType=VARCHAR},
+      </if>
+      <if test="operate != null" >
+        operate = #{operate,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="logintime != null" >
+        LoginTime = #{logintime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forbidtime != null" >
+        ForbidTime = #{forbidtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forbidcause != null" >
+        ForbidCause = #{forbidcause,jdbcType=VARCHAR},
+      </if>
+      <if test="verification != null" >
+        verification = #{verification,jdbcType=VARCHAR},
+      </if>
+      <if test="verificationtime != null" >
+        verificationTime = #{verificationtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="phonenum != null" >
+        phoneNum = #{phonenum,jdbcType=VARCHAR},
+      </if>
+      <if test="ip1 != null" >
+        ip1 = #{ip1,jdbcType=VARCHAR},
+      </if>
+      <if test="ip2 != null" >
+        ip2 = #{ip2,jdbcType=VARCHAR},
+      </if>
+      <if test="ips != null" >
+        ips = #{ips,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where agencyID = #{agencyid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.game.WX.model.Account" >
+    update account
+    set userName = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      referrer = #{referrer,jdbcType=INTEGER},
+      account = #{account,jdbcType=VARCHAR},
+      weixin = #{weixin,jdbcType=VARCHAR},
+      operate = #{operate,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      LoginTime = #{logintime,jdbcType=TIMESTAMP},
+      ForbidTime = #{forbidtime,jdbcType=TIMESTAMP},
+      ForbidCause = #{forbidcause,jdbcType=VARCHAR},
+      verification = #{verification,jdbcType=VARCHAR},
+      verificationTime = #{verificationtime,jdbcType=TIMESTAMP},
+      phoneNum = #{phonenum,jdbcType=VARCHAR},
+      ip1 = #{ip1,jdbcType=VARCHAR},
+      ip2 = #{ip2,jdbcType=VARCHAR},
+      ips = #{ips,jdbcType=VARCHAR}
+    where agencyID = #{agencyid,jdbcType=INTEGER}
+  </update>
+</mapper>
